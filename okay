@@ -1,0 +1,233 @@
+import java.util.Scanner;
+/**
+ * Allow the input of points and gives options on what points to import and shows grade when prompted.
+ * 
+ * @author (Mikaela Merolesi) 
+ * 
+ 
+ * 
+ */
+public class CalculateMyGrade
+{
+    // instance variables - replace the example below with your own
+    private int hwdone;
+    private int hwtotal;
+    private int projdone;
+    private int projtotal;
+    private int middone;
+    private int midtotal;
+    private int finaldone;
+    private int finaltotal;
+   
+    private int totaldone = hwdone + projdone + middone + finaldone;
+    private int total = hwtotal + projtotal + midtotal + finaltotal;
+    
+    /**
+     *  Input:none 
+     *  Output:none 
+     *  Description: This is the constructor
+     */
+    public CalculateMyGrade()
+    {
+       hwdone = 0;
+       hwtotal = 0;
+       projdone = 0;
+       projtotal = 0;
+       middone = 0;
+       midtotal = 0;
+       finaldone = 0;
+       finaltotal = 0;
+       totaldone = 0;
+       total = 0;
+    }
+    /**
+     *  Input:none 
+     *  Output:none 
+     *  Description: This is the menu. Shows option and depending on choice, performs methods called.
+     */
+    public void printMenu()
+    {
+        boolean displayMenu = true;
+        while(displayMenu)
+        {
+            System.out.println("\f");
+            System.out.println("-------------------- Current Settings --------------------");
+            System.out.println("Homework, Labs, Quizzes: "+ hwdone +" out of "+ hwtotal +" points");
+            System.out.println("Projects: "+ projdone +" out of "+ projtotal + " points");
+            System.out.println("Midterms: "+ middone +" out of "+ midtotal + " points");
+            System.out.println("Final: "+ finaldone +" out of "+ finaltotal + " points");
+            System.out.println("------------------------ Main Menu -----------------------");
+            System.out.println("1) Enter points for Homework, Labs, Quizzes");
+            System.out.println("2) Enter points for Projects");
+            System.out.println("3) Enter points for Midterms");
+            System.out.println("4) Enter points for Final");
+            System.out.println("5) Display current course percentage and letter grade");
+            System.out.println("6) Quit program");
+            System.out.println("----------------------------------------------------------");
+            System.out.println("Enter choice>");
+      
+            
+            Scanner scan = new Scanner (System.in);
+            String choice = scan.nextLine();
+            
+            System.out.println();
+            if (choice.equals("1"))
+            {
+                System.out.print("How many points did you recieve?");
+                Scanner rec = new Scanner (System.in);
+                String reci = rec.nextLine();
+                int recieved = Integer.parseInt(reci);
+                System.out.print("How many points was it out of?");
+                Scanner out = new Scanner (System.in);
+                String outt = out.nextLine();
+                int outta = Integer.parseInt(outt);
+                enterHomeworkLabQuiz(recieved, outta);
+                pauseMenu();
+            }
+            else if (choice.equals("2"))
+            {
+                System.out.print("How many points did you recieve?");
+                Scanner rec = new Scanner (System.in);
+                String reci = rec.nextLine();
+                int recieved = Integer.parseInt(reci);
+                System.out.print("How many points was it out of?");
+                Scanner out = new Scanner (System.in);
+                String outt = out.nextLine();
+                int outta = Integer.parseInt(outt);
+                enterProjectPoints(recieved, outta);
+                pauseMenu();
+            }
+            else if (choice.equals("3"))
+            {
+                System.out.print("How many points did you recieve?");
+                Scanner rec = new Scanner (System.in);
+                String reci = rec.nextLine();
+                int recieved = Integer.parseInt(reci);
+                System.out.print("How many points was it out of?");
+                Scanner out = new Scanner (System.in);
+                String outt = out.nextLine();
+                int outta = Integer.parseInt(outt);
+                enterMidtermPoints(recieved, outta);
+                pauseMenu();
+            }
+            else if (choice.equals("4"))
+            {
+                System.out.print("How many points did you recieve?");
+                Scanner rec = new Scanner (System.in);
+                String reci = rec.nextLine();
+                int recieved = Integer.parseInt(reci);
+                System.out.print("How many points was it out of?");
+                Scanner out = new Scanner (System.in);
+                String outt = out.nextLine();
+                int outta = Integer.parseInt(outt);
+                enterFinalPoints(recieved, outta);
+                pauseMenu();
+            }
+            else if (choice.equals("5"))
+            {
+                
+                getTotalPoints();
+                pauseMenu();
+            }
+            else
+            {
+               System.out.println("You must enter a valid choice"); 
+               pauseMenu();
+            }
+        }
+    }
+    /**
+     *  Input: Int (pointsDone, totalpoints)
+     *  Output: Void 
+     *  Description: this adds points to the Homework, Lab and Quiz section.
+     */
+    public void enterHomeworkLabQuiz(int pointsDone, int totalpoints)
+    {
+        hwdone = hwdone + pointsDone;
+        hwtotal = hwtotal + totalpoints;
+        
+    }
+     /**
+     *  Input: Int (pointsDone, totalpoints)
+     *  Output: Void 
+     *  Description: this adds points to the Projects section.
+     */
+     public void enterProjectPoints(int pointsDone, int totalpoints)
+    {
+        projdone = projdone + pointsDone;
+        projtotal = projtotal + totalpoints;
+        
+    }
+     /**
+     *  Input: Int (pointsDone, totalpoints)
+     *  Output: Void 
+     *  Description: this adds points to the Midterm section.
+     */
+     public void enterMidtermPoints(int pointsDone, int totalpoints)
+    {
+        middone = middone + pointsDone;
+        midtotal = midtotal + totalpoints;
+        
+    }
+     /**
+     *  Input: Int (pointsDone, totalpoints)
+     *  Output: Void 
+     *  Description: this adds points to the Final section.
+     */
+     public void enterFinalPoints(int pointsDone, int totalpoints)
+    {
+        finaldone = finaldone + pointsDone;
+        finaltotal = finaltotal + totalpoints;
+        
+    }
+     /**
+     *  Input: none
+     *  Output: Void 
+     *  Description: this calculates what letter grade you would get based on the numeric percentage of points recieved and total points,
+     */
+     public void getTotalPoints()
+    {
+        
+        totaldone = hwdone + projdone + middone + finaldone;
+        total = hwtotal + projtotal + midtotal + finaltotal;
+        double average = (hwdone + projdone + middone + finaldone) / (hwtotal + projtotal + midtotal + finaltotal) * 100;
+        if (average < 65)
+        {
+           System.out.println("Letter grade: F");
+           System.out.println("Numeric grade: " + average);
+        }
+        else if (average < 70 && average > 64)
+        {
+           System.out.println("Letter grade: D");
+           System.out.println("Numeric grade: " + average);
+        }
+        else if (average < 80 && average > 69)
+        {
+           System.out.println("Letter grade: C");
+           System.out.println("Numeric grade: " + average);
+        }
+        else if (average < 90 && average > 79)
+        {
+           System.out.println("Letter grade: B");
+           System.out.println("Numeric grade: " + average);
+        }
+        else if (average > 90)
+        {
+           System.out.println("Letter grade: A");
+           System.out.println("Numeric grade: " + average);
+        }
+    }
+     /**
+     *  Input: None
+     *  Output: Void 
+     *  Description: Stops menu
+     */
+    public void pauseMenu()
+    {
+        Scanner scan = new Scanner (System.in);
+            
+        System.out.println("Press Enter to continue");
+        scan.nextLine();     
+    }
+}
+
